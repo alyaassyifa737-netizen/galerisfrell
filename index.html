@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Untuk Samuel (◍•ᴗ•◍)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: skyblue;
+      font-family: 'Bubblegum Sans', cursive;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      margin-top: 20px;
+      font-size: 28px;
+    }
+
+    .login-container {
+      margin-top: 150px;
+    }
+
+    input[type="password"] {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 20px;
+      border: none;
+      text-align: center;
+      width: 250px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 25px;
+      border-radius: 30px;
+      border: none;
+      background-color: pink;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff9fcf;
+      transform: scale(1.05);
+    }
+
+    #error-message {
+      color: red;
+      margin-top: 10px;
+    }
+
+    .gallery, .message {
+      display: none;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .photos {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin: 20px;
+      justify-items: center;
+    }
+
+    .photos img {
+      width: 90%;
+      border-radius: 20px;
+      aspect-ratio: 1 / 1;
+      border: 5px solid #ffd1dc;
+      opacity: 0.9;
+      transition: transform 0.3s;
+      object-fit: cover;
+    }
+
+    .photos img:hover {
+      transform: scale(1.03);
+      opacity: 1;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      margin-bottom: 40px;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: 0;
+      font-size: 24px;
+      color: pink;
+      animation: float 5s ease-in infinite;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-110vh) scale(1.8); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .message-content {
+      background-color: rgba(255, 182, 193, 0.7);
+      padding: 25px;
+      border-radius: 25px;
+      color: white;
+      font-size: 18px;
+      max-width: 800px;
+      margin: 30px auto;
+      line-height: 1.8;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .from-text {
+      margin-top: 30px;
+      font-size: 20px;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔹 Musik (tidak tampil, hanya suara) -->
+  <audio id="bg-music" loop>
+    <source src="real love.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Halaman Login -->
+  <div class="login-container" id="login-page">
+    <h1>Isi Disini Ya Sayangʕっ•ᴥ•ʔっ</h1>
+    <input type="password" id="password" placeholder="Masukkan Sandi">
+    <br>
+    <button onclick="checkPassword()">Masuk Sayang ◝(⁰▿⁰)◜</button>
+    <p id="error-message"></p>
+  </div>
+
+  <!-- Halaman Galeri -->
+  <div class="gallery" id="gallery-page">
+    <h1>All About Usʕ´•ᴥ•`ʔ</h1>
+    <div class="photos" id="photo-container"></div>
+    <div class="pagination" id="nav-buttons">
+      <button onclick="prevPage()">← Sebelumnya</button>
+      <button id="nextButton" onclick="nextPage()">Selanjutnya →</button>
+    </div>
+  </div>
+
+  <!-- Halaman Pesan -->
+  <div class="message" id="message-page">
+    <div class="message-content">
+      <p>
+        Sayang, tau ga? Tiap kali aku mikirin kamu, rasanya dunia jadi lebih tenang.  
+        Ga peduli seberapa capek hari ini, selama ada kamu yang ngasih semangat kecil  
+        atau sekadar senyum manis, semuanya jadi ringan. Aku bersyukur banget punya kamu  
+        bukan cuma karena kamu baik, tapi karena kamu tulus, hangat, dan selalu tau  
+        gimana cara bikin aku merasa dicintai. Aku janji, aku juga bakal terus berusaha  
+        bikin kamu ngerasa aman dan bahagia di sisiku, setiap hari.
+      </p>
+      <p>
+        Kamu seperti pelangi yang datang perlahan, tapi meninggalkan keindahan yang sulit dilupakan.  
+        Dalam diammu aku temukan ketenangan, dalam tawamu aku temukan alasan untuk terus bertahan.  
+        Aku ga butuh dunia yang sempurna, aku cuma butuh dunia kecil di mana ada kamu di dalamnya.  
+        Tempat semua rasa lelah bisa hilang hanya dengan genggaman tanganmu. 
+      </p>
+      <p>
+        Hubungan kita mungkin ga selalu mudah. Ada waktu di mana kita salah paham,  
+        diam-diam saling rindu tapi gengsi buat bilang. Tapi di balik itu semua,  
+        aku sadar ga ada yang lebih aku mau selain terus sama kamu. Aku cinta caramu marah,  
+        caramu bercanda, bahkan caramu diam. Kamu rumah yang selalu aku cari, dan  
+        aku pengen jadi tempat paling nyaman buat kamu pulang kapan pun dunia terasa berat.
+      </p>
+      <p>
+        Aku ga tau harus gimana jelasin perasaanku ke kamu. Rasanya kayak campuran  
+        antara nyaman, sayang, dan tenang yang semuanya cuma muncul kalau kamu ada.  
+        Aku nggak butuh janji besar, cukup kamu tetap di sini, jadi dirimu sendiri,  
+        dan biarkan aku mencintaimu dengan caraku yang sederhana tapi sungguh-sungguh.  
+        Aku ingin tumbuh bersamamu, tertawa bareng, bahkan menua bareng,  
+        sampai dunia ini bosan lihat kita masih saling genggam tangan.
+      </p>
+
+      <div class="from-text">Dari Alya, Untuk Samuel ( •͈ᴗ•͈)</div>
+      <br>
+      <button onclick="backToGallery()">← Kembali ke Galeri</button>
+    </div>
+  </div>
+
+  <script>
+    const correctPassword = "pacaralya";
+    const music = document.getElementById("bg-music");
+    const photos = [
+      "IMG_20251020_092805_860.jpg","IMG_20251020_092851_172.jpg","IMG_20251020_105036_533.jpg","IMG-20250712-WA0422.jpg","IMG-20240829-WA0122.jpg","IMG-20240726-WA0160.jpg","IMG-20240726-WA0152.jpg","IMG-20240726-WA0154.jpg","IMG-20240726-WA0146.jpg","IMG_20251023_102441.jpg",
+      "IMG_20251023_102419.jpg","IMG_20251023_102358.jpg","IMG20240731183122.jpg","IMG20240731183121.jpg","IMG20240620135829.jpg","IMG20240620135812.jpg","Screenshot_2025-10-23-10-58-26-51.jpg","Screenshot_2025-10-23-10-58-13-91.jpg","Screenshot_2025-10-23-10-58-00-61.jpg","Screenshot_2025-10-23-10-57-44-14.jpg",
+      "Screenshot_2025-10-23-10-57-22-58.jpg","Screenshot_2025-10-23-10-55-57-99.jpg","Screenshot_2025-10-23-10-55-39-25.jpg","Screenshot_2025-10-23-10-55-12-51.jpg","Screenshot_2025-10-23-10-55-01-13.jpg","Screenshot_2025-10-23-10-54-49-80.jpg","Screenshot_2025-10-23-10-54-37-44.jpg","Screenshot_2025-10-23-10-54-20-31.jpg","Screenshot_2025-10-23-10-54-07-01.jpg","Screenshot_2025-10-23-10-53-49-76.jpg",
+      "Screenshot_2025-10-23-10-53-39-21.jpg","Screenshot_2025-10-23-10-52-47-27.jpg","Screenshot_2025-10-23-10-52-31-61.jpg","Screenshot_2025-10-23-10-52-18-83.jpg","Screenshot_2025-10-23-10-52-04-88.jpg","Screenshot_2025-10-23-10-51-48-95.jpg","Screenshot_2025-10-23-10-51-34-38.jpg","Screenshot_2025-10-23-10-51-22-41.jpg","Screenshot_2025-10-23-10-51-07-27.jpg","Screenshot_2025-10-23-10-50-43-09.jpg",
+      "Screenshot_2025-10-23-10-50-18-23.jpg","Screenshot_2025-10-23-10-48-53-49.jpg","Screenshot_2025-10-23-10-48-31-80.jpg","Screenshot_2025-10-23-10-48-15-56.jpg","Screenshot_2025-10-23-10-48-00-43.jpg","Screenshot_2025-10-23-10-47-34-22.jpg","Screenshot_2025-10-23-10-47-12-01.jpg","Screenshot_2025-10-23-10-46-54-57.jpg","IMG_20251023_104944.jpg","IMG_20251023_104916.jpg"
+    ];
+
+    const totalPhotos = photos.length;
+    const photosPerPage = 10;
+    let currentPage = 1;
+
+    function checkPassword() {
+      const password = document.getElementById("password").value;
+      const error = document.getElementById("error-message");
+      if (password === correctPassword) {
+        document.getElementById("login-page").style.display = "none";
+        document.getElementById("gallery-page").style.display = "block";
+        music.play();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        showPhotos();
+      } else {
+        error.textContent = "Yahh Kamu Bukan Pacar Aku Yaa ಥ‿ಥ";
+      }
+    }
+
+    function showPhotos() {
+      const container = document.getElementById("photo-container");
+      container.innerHTML = "";
+      const start = (currentPage - 1) * photosPerPage;
+      const end = Math.min(start + photosPerPage, totalPhotos);
+      for (let i = start; i < end; i++) {
+        const img = document.createElement("img");
+        img.src = photos[i];
+        container.appendChild(img);
+      }
+
+      const nav = document.getElementById("nav-buttons");
+      nav.innerHTML = "";
+      const prevButton = document.createElement("button");
+      prevButton.textContent = "← Sebelumnya";
+      prevButton.onclick = () => { prevPage(); window.scrollTo({ top: 0, behavior: "smooth" }); };
+      nav.appendChild(prevButton);
+
+      if (end < totalPhotos) {
+        const nextButton = document.createElement("button");
+        nextButton.textContent = "Selanjutnya →";
+        nextButton.onclick = () => { nextPage(); window.scrollTo({ top: 0, behavior: "smooth" }); };
+        nav.appendChild(nextButton);
+      } else {
+        const msgButton = document.createElement("button");
+        msgButton.textContent = "Pesan 💌";
+        msgButton.onclick = () => { showMessage(); window.scrollTo({ top: 0, behavior: "smooth" }); };
+        nav.appendChild(msgButton);
+      }
+    }
+
+    function nextPage() { if (currentPage * photosPerPage < totalPhotos) { currentPage++; showPhotos(); } }
+    function prevPage() { if (currentPage > 1) { currentPage--; showPhotos(); } }
+
+    function showMessage() {
+      document.getElementById("gallery-page").style.display = "none";
+      document.getElementById("message-page").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      music.play(); // tetap lanjut musik
+      spawnHearts();
+    }
+
+    function backToGallery() {
+      document.getElementById("message-page").style.display = "none";
+      document.getElementById("gallery-page").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      music.play();
+    }
+
+    // Efek love 10 detik
+    function spawnHearts() {
+      const duration = 10000;
+      const startTime = Date.now();
+      const heartInterval = setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.textContent = "💗";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.animationDuration = (2 + Math.random() * 2) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+        if (Date.now() - startTime > duration) clearInterval(heartInterval);
+      }, 100);
+    }
+  </script>
+
+</body>
+</html>
